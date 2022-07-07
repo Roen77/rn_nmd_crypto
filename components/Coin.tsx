@@ -23,6 +23,7 @@ export const Icon = styled.Image`
 `;
 
 const Coin = ({symbol, index, id}) => {
+  const navigation = useNavigation();
   //애니메이션
   const opacity = useRef(new Animated.Value(0)).current;
   useEffect(() => {
@@ -38,7 +39,9 @@ const Coin = ({symbol, index, id}) => {
   });
   return (
     //스타일로 flex를 지정해주어야 제대로 너비차지하는듯?
-    <TouchableOpacity style={{flex: 0.31}}>
+    <TouchableOpacity
+      style={{flex: 0.31}}
+      onPress={() => navigation.navigate('Detail', {symbol, id})}>
       <Wrapper style={{opacity, transform: [{scale}]}}>
         <Icon
           source={{
